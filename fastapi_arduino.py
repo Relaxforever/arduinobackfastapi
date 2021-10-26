@@ -39,7 +39,7 @@ app = FastAPI(title="Arduino FastAPI",
               description="Here's our API...", version="1.0")
 
 
-@app.post('/api/arduino', summary="", description="")
+@app.post('/api/arduino/', summary="", description="")
 async def arduino(request: DataTempDistance):
     with open('arduino_data.csv', 'a', encoding='UTF8') as f:
         writer = csv.writer(f)
@@ -52,7 +52,7 @@ async def arduino(request: DataTempDistance):
     pass
 
 
-@app.get("/", tags=["todos"])
+@app.get("/api/arduino/", tags=["todos"])
 async def get_temperature():
     with open('arduino_data.csv', 'r', encoding='UTF8') as f:
         csv_reader = csv.reader(f)
