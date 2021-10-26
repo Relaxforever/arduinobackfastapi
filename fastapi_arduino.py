@@ -70,6 +70,7 @@ async def get_temperature():
 
     return {"body": data_object}
 
+
 if __name__ == "__main__":
 
     uvicorn.run("fastapi_arduino:app", host="127.0.0.1",
