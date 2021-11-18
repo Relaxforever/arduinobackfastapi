@@ -14,6 +14,10 @@ class DataTempDistance(BaseModel):
     temp: float
     distance: int
 
+class button1(BaseModel):
+    on: bool
+
+
 
 
 app = FastAPI()
@@ -73,7 +77,95 @@ async def get_temperature():
     return {"body": data_object}
 
 
+
+
+
+#Get y Post de button 1
+
+@app.post('/api/arduino/button1', summary="", description="")
+async def arduino(request: button1):
+    with open('arduino_databutton1.csv', 'w', encoding='UTF8') as f:
+        writer = csv.writer(f)
+        # write the data
+        # print(request)
+        data = [request.on]
+        print(data)
+        writer.writerow(data)
+    print("Arduino")
+
+    return (f"Button cambiado a {request.on}" )
+    pass
+
+@app.get("/api/arduino/button1", tags=["todos"])
+async def get_temperature():
+    with open('arduino_databutton1.csv', 'r', encoding='UTF8') as f:
+        csv_reader = csv.reader(f)
+        data_object = []
+        row1 = next(csv_reader)
+        print(row1)
+        #ta_object.append(button1(on=row1))
+    return {"on": row1}
+
+
+# Get y Post Button 2
+@app.post('/api/arduino/button2', summary="", description="")
+async def arduino(request: button1):
+    with open('arduino_databutton1.csv', 'w', encoding='UTF8') as f:
+        writer = csv.writer(f)
+        # write the data
+        # print(request)
+        data = [request.on]
+        print(data)
+        writer.writerow(data)
+    print("Arduino")
+
+    return (f"Button cambiado a {request.on}" )
+    pass
+
+@app.get("/api/arduino/button2", tags=["todos"])
+async def get_temperature():
+    with open('arduino_databutton1.csv', 'r', encoding='UTF8') as f:
+        csv_reader = csv.reader(f)
+        data_object = []
+        row1 = next(csv_reader)
+        print(row1)
+        #ta_object.append(button1(on=row1))
+    return {"on": row1}
+
+
+
+
+#Get y Post Button 3
+@app.post('/api/arduino/button3', summary="", description="")
+async def arduino(request: button1):
+    with open('arduino_databutton1.csv', 'w', encoding='UTF8') as f:
+        writer = csv.writer(f)
+        # write the data
+        # print(request)
+        data = [request.on]
+        print(data)
+        writer.writerow(data)
+    print("Arduino")
+
+    return (f"Button cambiado a {request.on}" )
+    pass
+
+@app.get("/api/arduino/button3", tags=["todos"])
+async def get_temperature():
+    with open('arduino_databutton1.csv', 'r', encoding='UTF8') as f:
+        csv_reader = csv.reader(f)
+        data_object = []
+        row1 = next(csv_reader)
+        print(row1)
+        #ta_object.append(button1(on=row1))
+    return {"on": row1}
+
+
+
+
+
+
 if __name__ == "__main__":
 
     uvicorn.run("fastapi_arduino:app", host="127.0.0.1",
-                port=5000, log_level="info")
+                port=5000, log_level="info", debug=True)
