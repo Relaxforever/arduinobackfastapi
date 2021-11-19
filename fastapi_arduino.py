@@ -104,12 +104,6 @@ async def get_button1():
         row1 = next(csv_reader)
         print(row1)
         #ta_object.append(button1(on=row1))
-        if (row1[0] == "True"):
-            return {"on": "true"}
-        elif(row1[0] == "False"):
-            return {"on": "false"}
-        print(row1[0])
-        
     return {"on": row1}
 
 
