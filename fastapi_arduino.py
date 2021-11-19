@@ -15,7 +15,7 @@ class DataTempDistance(BaseModel):
     humidity: float
 
 class button1(BaseModel):
-    on: bool
+    on: int
 
 
 
